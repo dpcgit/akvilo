@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "myApp",
+  "appId": "com.akvilo.app",
+  "appName": "akvilo",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build",
