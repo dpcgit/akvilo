@@ -4,7 +4,16 @@ import {addCircle} from 'ionicons/icons'
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 
-const Tab1: React.FC = (props) => {
+
+interface State{
+ target: number;
+};
+
+class Tab1 extends React.Component<State> {
+  state: State = {
+	target:1000
+};
+  render(){
   return (
     <IonPage>
       <IonHeader>
@@ -27,6 +36,7 @@ const Tab1: React.FC = (props) => {
 	  </IonIcon>
 	 </IonFabButton>
 	</IonFab>
+	<p>{this.state.target}</p>
 	
         <IonHeader collapse="condense">
           <IonToolbar>
@@ -36,6 +46,7 @@ const Tab1: React.FC = (props) => {
       </IonContent>
     </IonPage>
   );
+ }
 };
 
 export default Tab1;
