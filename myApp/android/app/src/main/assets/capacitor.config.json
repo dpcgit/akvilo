@@ -1,0 +1,8 @@
+{
+  "appId": "com.akvilo.app",
+  "appName": "akvilo",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
