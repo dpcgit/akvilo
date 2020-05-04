@@ -4,25 +4,33 @@ import {addCircle} from 'ionicons/icons'
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 
-
+// Interface for state
 interface State{
  target: number;
+ input: number;
 };
 
 class Tab1 extends React.Component<State> {
+// State initialization
   state: State = {
-	target:1000
+	target:0,
+	input:0
   };
 
 
+//Increment handler
   increment = () => {
-    this.setState({
-      target: (this.state.target + 100)
-    });
+    this.setState({target:this.state.target + 100});
   };
 
+// Hanlder for input change
   onChange = (e:any): void => {
-   this.setState({target: e.currentTarget.value})
+   this.setState({input: parseInt(e.currentTarget.value)})
+  }
+
+// Handler for set button
+  onSubmit = (e:any): void => {
+  this.setState({target: this.state.input})
   }
 
 
@@ -36,11 +44,11 @@ class Tab1 extends React.Component<State> {
       </IonHeader>
       <IonContent>
 
-	<IonInput type="number" placeholder="Ejemplo, 2000 ml, 2 L" max="5000" min="0" onIonChange={this.onChange}>
-	Ingresa la cantidad de agua a tomar
+	<IonInput type="number" placeholder="Ejemplo, 2000 ml" max="5000" min="0" onIonChange={this.onChange}>
+	Ingresa la cantidad de agua a tomar (ml):
 	</IonInput>
 
-	<IonButton type="submit">Fijar
+	<IonButton type="submit" onClick={this.onSubmit}>Fijar
 	</IonButton>
 
 	<IonFab vertical="bottom" horizontal="end">
