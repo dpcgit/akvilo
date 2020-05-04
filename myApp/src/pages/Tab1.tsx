@@ -8,19 +8,21 @@ import './Tab1.css';
 interface State{
  target: number;
  input: number;
+ consumed: number;
 };
 
 class Tab1 extends React.Component<State> {
 // State initialization
   state: State = {
 	target:0,
-	input:0
+	input:0,
+	consumed:0
   };
 
 
 //Increment handler
   increment = () => {
-    this.setState({target:this.state.target + 100});
+    this.setState({consumed:this.state.consumed + 100});
   };
 
 // Hanlder for input change
@@ -57,7 +59,12 @@ class Tab1 extends React.Component<State> {
 	  </IonIcon>
 	 </IonFabButton>
 	</IonFab>
+
+	Objetivo:
 	<p>{this.state.target}</p>
+
+	Progreso:
+	<p>{this.state.consumed} / {this.state.target} ml </p>
 	
         <IonHeader collapse="condense">
           <IonToolbar>
