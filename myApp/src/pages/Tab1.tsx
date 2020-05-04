@@ -12,23 +12,18 @@ interface State{
 class Tab1 extends React.Component<State> {
   state: State = {
 	target:1000
-};
+  };
 
 
-/** Function sets state to x**/
-
-increment = () => {
+  increment = () => {
     this.setState({
       target: (this.state.target + 100)
     });
   };
 
-
-fijar = ()=>{
-	this.setState({
-      	target: 200
-	});
- };
+  onChange = (e:any): void => {
+   this.setState({target: e.currentTarget.value})
+  }
 
 
   render(){
@@ -41,11 +36,11 @@ fijar = ()=>{
       </IonHeader>
       <IonContent>
 
-	<IonInput type="number" placeholder="Ejemplo, 2000 ml" max="5000" min="0" onChange={()=>alert("puto")}>
+	<IonInput type="number" placeholder="Ejemplo, 2000 ml, 2 L" max="5000" min="0" onIonChange={this.onChange}>
 	Ingresa la cantidad de agua a tomar
 	</IonInput>
 
-	<IonButton type="submit" onClick={this.fijar}>Fijar
+	<IonButton type="submit">Fijar
 	</IonButton>
 
 	<IonFab vertical="bottom" horizontal="end">
