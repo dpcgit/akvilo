@@ -1,6 +1,6 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonText, IonButton, IonFab, IonIcon, IonFabButton} from '@ionic/react';
-import {addCircle} from 'ionicons/icons'
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonText, IonButton, IonFab, IonIcon, IonFabButton, IonPopover} from '@ionic/react';
+import {addCircle, cafe} from 'ionicons/icons'
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 
@@ -9,6 +9,8 @@ interface State{
  target: number;
  input: number;
  consumed: number;
+ increment: number;
+ popoveropen: boolean;
 };
 
 class Tab1 extends React.Component<State> {
@@ -16,13 +18,15 @@ class Tab1 extends React.Component<State> {
   state: State = {
 	target:0,
 	input:0,
-	consumed:0
+	consumed:0,
+	increment:200,
+	popoveropen:false
   };
 
 
 //Increment handler
   increment = () => {
-    this.setState({consumed:this.state.consumed + 100});
+    this.setState({consumed:this.state.consumed + this.state.increment});
   };
 
 // Hanlder for input change
@@ -30,11 +34,21 @@ class Tab1 extends React.Component<State> {
    this.setState({input: parseInt(e.currentTarget.value)})
   }
 
+// Handler for input change, increment setting
+
+ onIncrementChange = (e:any): void=> {
+  this.setState({increment: parseInt(e.currentTarget.value)})
+ }
+
 // Handler for set button
   onSubmit = (e:any): void => {
   this.setState({target: this.state.input})
   }
 
+// Handler for popover
+ showPop = () =>{
+  this.setState({popoveropen: !this.state.popoveropen})
+}
 
   render(){
   return (
@@ -54,6 +68,12 @@ class Tab1 extends React.Component<State> {
 	</IonButton>
 
 	<IonFab vertical="bottom" horizontal="end">
+
+	 <IonFabButton>
+	  <IonIcon icon={cafe} size="large" onClick={this.showPop}>
+	  </IonIcon>
+         </IonFabButton>
+
 	 <IonFabButton>
 	  <IonIcon icon={addCircle} size="large" onClick={this.increment}>
 	  </IonIcon>
@@ -65,6 +85,14 @@ class Tab1 extends React.Component<State> {
 
 	Progreso:
 	<p>{this.state.consumed} / {this.state.target} ml </p>
+
+	Incremento putos:
+	<p>{this.state.increment}</p>
+
+	<IonPopover isOpen={this.state.popoveropen} onDidDismiss={this.showPop}>
+	 <IonInput type="number" value={this.state.increment} onIonChange={this.onIncrementChange}>Incremento (ml):
+	 </IonInput>
+	</IonPopover>
 	
         <IonHeader collapse="condense">
           <IonToolbar>
