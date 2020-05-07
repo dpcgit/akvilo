@@ -3,6 +3,10 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonText
 import {addCircle, cafe} from 'ionicons/icons'
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
+import {Plugins} from '@capacitor/core';
+
+const {Storage} = Plugins;
+
 
 // Interface for state
 interface State{
@@ -12,6 +16,22 @@ interface State{
  increment: number;
  popoveropen: boolean;
 };
+
+
+
+async function setTarget(value: string) {
+ await Storage.set(
+  {
+  key: 'target',
+  value: value
+  }
+ );
+};
+
+async function getTarget(){
+ const a = await Storage.get({key:'target'});
+ console.log(a);
+}
 
 class Tab1 extends React.Component<State> {
 // State initialization
@@ -35,7 +55,6 @@ class Tab1 extends React.Component<State> {
   }
 
 // Handler for input change, increment setting
-
  onIncrementChange = (e:any): void=> {
   this.setState({increment: parseInt(e.currentTarget.value)})
  }
@@ -43,6 +62,7 @@ class Tab1 extends React.Component<State> {
 // Handler for set button
   onSubmit = (e:any): void => {
   this.setState({target: this.state.input})
+  setTarget(String(this.state.input));
   }
 
 // Handler for popover
@@ -88,6 +108,10 @@ class Tab1 extends React.Component<State> {
 
 	Incremento putos:
 	<p>{this.state.increment}</p>
+
+	<IonButton onClick={getTarget}> Ver storage
+	 
+	</IonButton>
 
 	<IonPopover isOpen={this.state.popoveropen} onDidDismiss={this.showPop}>
 	 <IonInput type="number" value={this.state.increment} onIonChange={this.onIncrementChange}>Incremento (ml):
