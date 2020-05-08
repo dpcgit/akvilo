@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonText, IonButton, IonFab, IonIcon, IonFabButton, IonPopover} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonFab, IonIcon, IonFabButton, IonPopover} from '@ionic/react';
 import {addCircle, cafe, remove, removeCircle} from 'ionicons/icons'
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
@@ -18,16 +18,12 @@ interface State{
 };
 
 
-
+// Function setting the target in storage
 async function setTarget(value: string) {
- await Storage.set(
-  {
-  key: 'target',
-  value: value
-  }
- );
+ await Storage.set({key: 'target',  value: value});
 };
 
+// Function getting the target from storage
 async function getTarget(){
  const a = await Storage.get({key:'target'});
  console.log(a);
@@ -44,7 +40,7 @@ class Tab1 extends React.Component<State> {
   };
 
 
-//Increment handler
+// Increment handler
   increment = () => {
     this.setState({consumed:this.state.consumed + this.state.increment});
   };
@@ -116,7 +112,7 @@ class Tab1 extends React.Component<State> {
 	Progreso:
 	<p>{this.state.consumed} / {this.state.target} ml </p>
 
-	Incremento putos:
+	Incremento:
 	<p>{this.state.increment}</p>
 
 	<IonButton onClick={getTarget}> Ver storage
