@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonText, IonButton, IonFab, IonIcon, IonFabButton, IonPopover} from '@ionic/react';
-import {addCircle, cafe} from 'ionicons/icons'
+import {addCircle, cafe, remove, removeCircle} from 'ionicons/icons'
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import {Plugins} from '@capacitor/core';
@@ -47,6 +47,11 @@ class Tab1 extends React.Component<State> {
 //Increment handler
   increment = () => {
     this.setState({consumed:this.state.consumed + this.state.increment});
+  };
+
+//Decrement handler
+  decrement = () =>{
+   this.setState({consumed:this.state.consumed - this.state.increment});
   };
 
 // Hanlder for input change
@@ -96,6 +101,11 @@ class Tab1 extends React.Component<State> {
 
 	 <IonFabButton>
 	  <IonIcon icon={addCircle} size="large" onClick={this.increment}>
+	  </IonIcon>
+	 </IonFabButton>
+
+	 <IonFabButton>
+	 <IonIcon icon={removeCircle} size="large" onClick={this.decrement}>
 	  </IonIcon>
 	 </IonFabButton>
 	</IonFab>
