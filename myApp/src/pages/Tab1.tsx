@@ -47,18 +47,18 @@ const onChange = (e:any):void => {
 
 	<IonFab vertical="bottom" horizontal="end">
 
-	 <IonFabButton>
-	  <IonIcon icon={cafe} size="large" onClick={()=>setPopover(!popover)}>
+	 <IonFabButton onClick={()=>setPopover(!popover)}>
+	  <IonIcon icon={cafe} size="large">
 	  </IonIcon>
          </IonFabButton>
 
-	 <IonFabButton>
-	  <IonIcon icon={addCircle} size="large" onClick={()=>setConsumed(consumed+increment)}>
+	 <IonFabButton onClick={()=>setConsumed(consumed+increment)}>
+	  <IonIcon icon={addCircle} size="large">
 	  </IonIcon>
 	 </IonFabButton>
 
-	 <IonFabButton>
-	 <IonIcon icon={removeCircle} size="large" onClick={()=>setConsumed(consumed-increment)}>
+	 <IonFabButton onClick={()=>setConsumed(consumed-increment)}>
+	 <IonIcon icon={removeCircle} size="large">
 	  </IonIcon>
 	 </IonFabButton>
 	</IonFab>
