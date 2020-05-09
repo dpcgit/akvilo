@@ -14,6 +14,13 @@ async function getTarget(){
  return a.value;
 }
 
+// Function getting the target from storage and then applying some function to it
+async function getTargetAndApply(func: any){
+ const target = await getTarget();
+ func(target);
+}
+
+
 
 const Tab1:  React.FC = () =>  {
 
@@ -21,6 +28,12 @@ const Tab1:  React.FC = () =>  {
  const [increment,setIncrement] = useState(200);
  const [popover,setPopover] = useState(false);
  const [consumed, setConsumed] = useState(0);
+
+ getTargetAndApply(setTarget);
+
+const onChange = (e:any):void => {
+ setIncrement(parseInt(e.currentTarget.value));
+}
 
   return (
     <IonPage>
@@ -51,7 +64,7 @@ const Tab1:  React.FC = () =>  {
 	</IonFab>
 
 	<IonPopover isOpen={popover} onDidDismiss={()=>setPopover(false)}>
-	 <IonInput type="number" value={increment}>Incremento (ml):
+	 <IonInput type="number" value={increment} onIonChange={onChange}>Incremento (ml):
 	 </IonInput>
 	</IonPopover>
 
