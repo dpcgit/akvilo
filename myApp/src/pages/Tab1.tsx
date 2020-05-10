@@ -7,19 +7,13 @@ import {Plugins} from '@capacitor/core';
 
 const {Storage} = Plugins;
 
-// Function getting the target from storage
-async function getTarget(){
- const a = await Storage.get({key:'target'});
+// Function getting the value for a given key from storage, and then applying an optional function
+async function getValueAndApply(key:string, func?: any){
+ const a = await Storage.get({key:key});
+ func==null?console.log("No function applied"):func(a.value);
  console.log(a.value)
  return a.value;
 }
-
-// Function getting the target from storage and then applying some function to it
-async function getTargetAndApply(func: any){
- const target = await getTarget();
- func(target);
-}
-
 
 
 const Tab1:  React.FC = () =>  {
@@ -29,11 +23,11 @@ const Tab1:  React.FC = () =>  {
  const [popover,setPopover] = useState(false);
  const [consumed, setConsumed] = useState(0);
 
- getTargetAndApply(setTarget);
+ getValueAndApply("target",setTarget);
 
-const onChange = (e:any):void => {
- setIncrement(parseInt(e.currentTarget.value));
-}
+ const onChange = (e:any):void => {
+  setIncrement(parseInt(e.currentTarget.value));
+ }
 
   return (
     <IonPage>
