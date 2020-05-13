@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonButton, IonFab, IonIcon, IonFabButton, IonPopover} from '@ionic/react';
-import {addCircle, cafe, remove, removeCircle} from 'ionicons/icons'
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, IonFab, IonIcon, IonFabButton, IonPopover} from '@ionic/react';
+import {addCircle, cafe, removeCircle} from 'ionicons/icons'
 import './Tab1.css';
 import {Plugins} from '@capacitor/core';
 

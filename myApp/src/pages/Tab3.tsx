@@ -1,6 +1,6 @@
 //Import useState also in order to use hooks, import storage plugin too
 import React, {useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonInput } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput } from '@ionic/react';
 import './Tab3.css';
 
 //Import of storage plugin
